@@ -23,7 +23,7 @@ namespace ACBr.Net.DFe.Core.Tests
                 TesteEnum1 = TesteEnum.Value1,
                 TesteEnum2 = null,
                 TestNullInt = 999,
-                TestDateTz = new DateTimeOffset(DateTime.Now, TimeSpan.FromHours(-4))
+                TestDateTz = new DateTimeOffset(DateTime.Now, TimeSpan.FromHours(-3))
             };
 
             var cdata = File.ReadAllText("cdata_teste.xml");

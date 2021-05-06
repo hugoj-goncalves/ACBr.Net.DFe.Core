@@ -73,32 +73,43 @@ namespace ACBr.Net.DFe.Core
 
             try
             {
-                var xmlSchema = XmlSchema.Read(new XmlTextReader(schema), (sender, args) =>
-                {
-                    switch (args.Severity)
-                    {
-                        case XmlSeverityType.Warning:
-                            // ReSharper disable once AccessToModifiedClosure
-                            avisosList.Add(args.Message);
-                            break;
-
-                        case XmlSeverityType.Error:
-                            // ReSharper disable once AccessToModifiedClosure
-                            errorList.Add(args.Message);
-                            break;
-                    }
-
-                    // Erro na validação do schema XSD
-                    if (args.Exception != null)
-                    {
-                        // ReSharper disable once AccessToModifiedClosure
-                        errorList.Add("\nErro: " + args.Exception.Message + "\nLinha " + args.Exception.LinePosition + " - Coluna "
-                                      + args.Exception.LineNumber + "\nSource: " + args.Exception.SourceUri);
-                    }
-                });
-
                 var settings = new XmlReaderSettings { ValidationType = ValidationType.Schema };
-                settings.Schemas.Add(xmlSchema);
+
+                var fileName = Path.GetFileName(schema);
+                var schemas = new List<string>
+                {
+                    schema,
+                    schema.Replace(fileName, "xmldsig-core-schema20020212.xsd")
+                };
+
+                foreach (var s in schemas)
+                {
+                    var xmlSchema = XmlSchema.Read(new XmlTextReader(s), (sender, args) =>
+                    {
+                        switch (args.Severity)
+                        {
+                            case XmlSeverityType.Warning:
+                                // ReSharper disable once AccessToModifiedClosure
+                                avisosList.Add(args.Message);
+                                break;
+
+                            case XmlSeverityType.Error:
+                                // ReSharper disable once AccessToModifiedClosure
+                                errorList.Add(args.Message);
+                                break;
+                        }
+
+                        // Erro na validação do schema XSD
+                        if (args.Exception != null)
+                        {
+                            // ReSharper disable once AccessToModifiedClosure
+                            errorList.Add("\nErro: " + args.Exception.Message + "\nLinha " + args.Exception.LinePosition + " - Coluna "
+                                              + args.Exception.LineNumber + "\nSource: " + args.Exception.SourceUri);
+                        }
+                    });
+
+                    settings.Schemas.Add(xmlSchema);
+                }
 
                 using (var xmlReader = XmlReader.Create(new StringReader(arquivoXml), settings))
                 {
