@@ -2,19 +2,19 @@
 
   <PropertyGroup>
     <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
-    <AssemblyName>ACBr.Net.DFe.Core</AssemblyName>
+    <AssemblyName>Eklesia.ACBr.Net.DFe.Core</AssemblyName>
     <RootNamespace>ACBr.Net.DFe.Core</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>acbr.net.snk</AssemblyOriginatorKeyFile>
-    <Copyright>Copyright © Grupo ACBr.Net 2014 - 2020</Copyright>
-    <Company>Grupo ACBr.Net</Company>
-    <Authors>Rafael Dias</Authors>
+    <Copyright>Copyright © Eklesia 2014 - 2020</Copyright>
+    <Company>Eklesia</Company>
+    <Authors>Hugo José</Authors>
     <PackageProjectUrl>https://acbrnet.github.io</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/7342977?v=3&amp;amp;s=200</PackageIconUrl>
-    <RepositoryUrl>https://github.com/ACBrNet/ACBr.Net.DFe.Core</RepositoryUrl>
+    <RepositoryUrl>https://github.com/hugoj-goncalves/ACBr.Net.DFe.Core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>ACBr.Net DFe</PackageTags>
+    <PackageTags>Eklesia, ACBr.Net DFe</PackageTags>
     <Description>Biblioteca para serialização e deserialização de xml e comunicação com os webservices</Description>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
